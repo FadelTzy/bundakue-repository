@@ -1,0 +1,30 @@
+import { Suspense } from "react";
+import Link from "next/link";
+import DivisionLoginForm from "@/components/DivisionLoginForm";
+
+export default function DivisionLoginPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+      <div className="w-full max-w-sm bg-white rounded-xl border border-gray-200 shadow-sm p-8">
+        <div className="text-center mb-6">
+          <div className="w-12 h-12 rounded-xl bg-brand-600 text-white flex items-center justify-center mx-auto text-xl">
+            📚
+          </div>
+          <h1 className="text-lg font-semibold text-gray-900 mt-3">Repository Divisi</h1>
+          <p className="text-sm text-gray-500">Bundakue Makassar</p>
+        </div>
+
+        <Suspense fallback={<p className="text-sm text-gray-400 text-center">Memuat...</p>}>
+          <DivisionLoginForm />
+        </Suspense>
+
+        <p className="text-center text-sm text-gray-400 mt-6">
+          Login sebagai admin?{" "}
+          <Link href="/admin/login" className="text-brand-600 hover:underline">
+            Klik di sini
+          </Link>
+        </p>
+      </div>
+    </div>
+  );
+}

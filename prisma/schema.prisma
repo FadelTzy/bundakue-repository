@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Category {
+  PANDUAN
+  SOP
+  PERATURAN
+}
+
+enum LinkType {
+  DRIVE
+  YOUTUBE
+  WEBSITE
+  LAINNYA
+}
+
+model Division {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  pinHash   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items KnowledgeItem[] @relation("ItemDivisions")
+}
+
+model KnowledgeItem {
+  id          String     @id @default(cuid())
+  title       String
+  slug        String     @unique
+  description String?
+  category    Category
+  linkType    LinkType
+  url         String
+  tags        String?
+  published   Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  divisions Division[] @relation("ItemDivisions")
+
+  @@index([category])
+  @@index([published])
+}
