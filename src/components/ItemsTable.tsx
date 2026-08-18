@@ -81,18 +81,19 @@ export default function ItemsTable({
           {error}
         </p>
       )}
-      <div className="bg-white border border-gray-200 rounded-xl overflow-hidden overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead className="bg-gray-50 text-gray-500 text-xs uppercase">
-            <tr>
-              <th className="text-left px-4 py-3 font-medium">Judul</th>
-              <th className="text-left px-4 py-3 font-medium">Divisi</th>
-              <th className="text-left px-4 py-3 font-medium">Sumber</th>
-              <th className="text-left px-4 py-3 font-medium">Status</th>
-              <th className="text-right px-4 py-3 font-medium">Aksi</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-100">
+      <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+        <div className="max-h-[65vh] overflow-y-auto overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-gray-50 text-gray-500 text-xs uppercase sticky top-0 z-10">
+              <tr>
+                <th className="text-left px-4 py-3 font-medium">Judul</th>
+                <th className="text-left px-4 py-3 font-medium">Divisi</th>
+                <th className="text-left px-4 py-3 font-medium">Sumber</th>
+                <th className="text-left px-4 py-3 font-medium">Status</th>
+                <th className="text-right px-4 py-3 font-medium">Aksi</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-100">
             {items.length === 0 && (
               <tr>
                 <td colSpan={5} className="px-4 py-10 text-center text-gray-500">
@@ -167,8 +168,9 @@ export default function ItemsTable({
                 </tr>
               );
             })}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
