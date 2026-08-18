@@ -1,6 +1,9 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import RepositoryPreview from "@/components/RepositoryPreview";
+
+export const dynamic = "force-dynamic";
 
 export default function HomePage() {
   return (
@@ -18,7 +21,7 @@ export default function HomePage() {
         </section>
 
         <section className="max-w-3xl mx-auto px-4 -mt-10 pb-16">
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="max-w-sm mx-auto">
             <Link
               href="/login"
               className="group bg-white rounded-xl border border-gray-200 p-6 flex flex-col gap-3 hover:border-brand-400 hover:shadow-md transition"
@@ -33,23 +36,10 @@ export default function HomePage() {
                 </p>
               </div>
             </Link>
-            <Link
-              href="/admin/login"
-              className="group bg-white rounded-xl border border-gray-200 p-6 flex flex-col gap-3 hover:border-brand-400 hover:shadow-md transition"
-            >
-              <div className="w-11 h-11 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center group-hover:bg-brand-600 group-hover:text-white transition text-xl">
-                🛠️
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900">Login Admin</h3>
-                <p className="text-sm text-gray-500 mt-0.5">
-                  Masuk dengan username &amp; password admin untuk mengelola seluruh repository
-                  dan divisi.
-                </p>
-              </div>
-            </Link>
           </div>
         </section>
+
+        <RepositoryPreview />
       </main>
       <Footer />
     </>

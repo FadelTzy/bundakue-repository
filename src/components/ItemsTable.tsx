@@ -120,7 +120,7 @@ export default function ItemsTable({
                       {item.divisions.map((d) => (
                         <span
                           key={d.id}
-                          className="text-xs bg-gray-100 text-gray-600 rounded-full px-2 py-0.5"
+                          className="text-xs bg-secondary-100 text-secondary-700 rounded-full px-2 py-0.5"
                         >
                           {d.name}
                         </span>

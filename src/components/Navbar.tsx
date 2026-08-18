@@ -15,9 +15,6 @@ export default function Navbar() {
           <Link href="/login" className="hover:text-brand-100">
             Login Divisi
           </Link>
-          <Link href="/admin/login" className="hover:text-brand-100">
-            Login Admin
-          </Link>
         </nav>
       </div>
     </header>

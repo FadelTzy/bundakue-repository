@@ -48,7 +48,7 @@ export default async function ItemDetailPage({ params }: { params: { id: string 
           {item.divisions.map((d) => (
             <span
               key={d.id}
-              className="text-xs bg-gray-100 text-gray-600 rounded-full px-3 py-1"
+              className="text-xs bg-secondary-100 text-secondary-700 rounded-full px-3 py-1"
             >
               {d.name}
             </span>
@@ -66,7 +66,7 @@ export default async function ItemDetailPage({ params }: { params: { id: string 
             {tags.map((t) => (
               <span
                 key={t}
-                className="text-xs bg-gray-100 text-gray-600 rounded-full px-3 py-1"
+                className="text-xs bg-secondary-100 text-secondary-700 rounded-full px-3 py-1"
               >
                 {t}
               </span>
