@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { LockIcon } from "./Icons";
+import DivisionPinModal from "./DivisionPinModal";
 
 type CategoryPreview = {
   key: string;
@@ -13,6 +13,7 @@ type CategoryPreview = {
 
 export default function RepositoryPreviewTabs({ categories }: { categories: CategoryPreview[] }) {
   const [activeKey, setActiveKey] = useState(categories[0]?.key);
+  const [unlockingId, setUnlockingId] = useState<string | null>(null);
   const active = categories.find((c) => c.key === activeKey) || categories[0];
 
   return (
@@ -45,9 +46,10 @@ export default function RepositoryPreviewTabs({ categories }: { categories: Cate
           <ul className="divide-y divide-gray-100">
             {active.items.map((item) => (
               <li key={item.id}>
-                <Link
-                  href={`/item/${item.id}`}
-                  className="group flex items-center justify-between gap-3 py-2.5"
+                <button
+                  type="button"
+                  onClick={() => setUnlockingId(item.id)}
+                  className="group w-full flex items-center justify-between gap-3 py-2.5 text-left"
                 >
                   <span className="text-sm text-gray-700 truncate group-hover:text-brand-600">
                     {item.title}
@@ -56,12 +58,14 @@ export default function RepositoryPreviewTabs({ categories }: { categories: Cate
                     <LockIcon className="w-3.5 h-3.5" />
                     Login untuk buka
                   </span>
-                </Link>
+                </button>
               </li>
             ))}
           </ul>
         )}
       </div>
+
+      <DivisionPinModal itemId={unlockingId} onClose={() => setUnlockingId(null)} />
     </div>
   );
 }
