@@ -5,7 +5,13 @@ import RepositoryPreviewTabs from "./RepositoryPreviewTabs";
 export default async function RepositoryPreview() {
   const items = await prisma.knowledgeItem.findMany({
     where: { published: true },
-    select: { id: true, title: true, category: true, updatedAt: true },
+    select: {
+      id: true,
+      title: true,
+      category: true,
+      updatedAt: true,
+      divisions: { select: { id: true, name: true } },
+    },
     orderBy: { updatedAt: "desc" },
   });
 
@@ -15,7 +21,7 @@ export default async function RepositoryPreview() {
     icon: category.icon,
     items: items
       .filter((item) => item.category === category.key)
-      .map((item) => ({ id: item.id, title: item.title })),
+      .map((item) => ({ id: item.id, title: item.title, divisions: item.divisions })),
   }));
 
   return (
