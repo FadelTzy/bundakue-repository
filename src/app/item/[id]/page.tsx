@@ -83,12 +83,14 @@ export default async function ItemDetailPage({ params }: { params: { id: string 
           >
             Buka Link Sumber <ExternalLinkIcon className="w-4 h-4" />
           </a>
-          <Link
-            href={`${basePath}/items/${item.id}/edit`}
-            className="inline-flex items-center gap-2 border border-gray-300 text-gray-700 hover:bg-white text-sm font-medium px-5 py-2.5 rounded-lg"
-          >
-            Ubah Dokumen
-          </Link>
+          {session.role === "ADMIN" && (
+            <Link
+              href={`${basePath}/items/${item.id}/edit`}
+              className="inline-flex items-center gap-2 border border-gray-300 text-gray-700 hover:bg-white text-sm font-medium px-5 py-2.5 rounded-lg"
+            >
+              Ubah Dokumen
+            </Link>
+          )}
         </div>
 
         {youtubeEmbed && (
