@@ -33,12 +33,18 @@ export default async function ItemDetailPage({ params }: { params: { id: string 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-3xl mx-auto px-4 py-10">
-        <Link
-          href={category ? `${basePath}/${category.slug}` : basePath}
-          className="text-brand-600 text-sm hover:underline"
-        >
-          &larr; Kembali ke {category?.label || "Repository"}
-        </Link>
+        {session.role === "USER" ? (
+          <Link href="/dashboard" className="text-brand-600 text-sm hover:underline">
+            &larr; Kembali ke Dashboard
+          </Link>
+        ) : (
+          <Link
+            href={category ? `${basePath}/${category.slug}` : basePath}
+            className="text-brand-600 text-sm hover:underline"
+          >
+            &larr; Kembali ke {category?.label || "Repository"}
+          </Link>
+        )}
 
         <div className="mt-4 flex items-center gap-2 flex-wrap">
           <span className="text-xs font-semibold uppercase tracking-wide text-brand-600">
