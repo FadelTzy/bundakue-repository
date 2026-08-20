@@ -34,8 +34,8 @@ export default async function ItemDetailPage({ params }: { params: { id: string 
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-3xl mx-auto px-4 py-10">
         {session.role === "USER" ? (
-          <Link href="/dashboard" className="text-brand-600 text-sm hover:underline">
-            &larr; Kembali ke Dashboard
+          <Link href="/" className="text-brand-600 text-sm hover:underline">
+            &larr; Kembali ke Halaman Utama
           </Link>
         ) : (
           <Link
